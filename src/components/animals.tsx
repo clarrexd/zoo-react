@@ -44,13 +44,13 @@ export default function ZooData() {
   return (
     <>
       <div>
-        {animals.map((animalList: any) => (
+        {animals.map((animal: any) => (
           <>
-            <img src={animalList.imageUrl}></img>
-            <div>Namn: {animalList.name}</div>
-            <span>{animalList.latinName}</span>
-            <div>{animalList.shortDescription}</div>
-            <div>Född: {animalList.yearOfBirth}</div>
+            <img src={animal.imageUrl}></img>
+            <div>Namn: {animal.name}</div>
+            <span>{animal.latinName}</span>
+            <div>{animal.shortDescription}</div>
+            <div>Född: {animal.yearOfBirth}</div>
           </>
         ))}
       </div>
