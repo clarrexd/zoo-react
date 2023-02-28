@@ -27,3 +27,9 @@
   width: 35vh;
   height: 200px;
 }
+
+.infoBtn {
+  width: 25vh;
+  margin: 1rem;
+  border-radius: 5%;
+}

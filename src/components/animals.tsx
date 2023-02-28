@@ -1,5 +1,8 @@
 import React from "react";
 import axios from "axios";
+import { BrowserRouter, Link } from "react-router-dom";
+import { Route } from "react-router-dom";
+import moreInfo from "../pages/moreInfo";
 
 /*export class animalsData extends React.Component {
   state = {
@@ -50,6 +53,7 @@ export default function ZooData() {
             <div className="names">Namn: {animal.name}</div>
             <div className="shortDesc">{animal.shortDescription}</div>
             <div className="yob">Född: {animal.yearOfBirth}</div>
+            <button className="infoBtn">Mer info</button>
           </div>
         </>
       ))}
