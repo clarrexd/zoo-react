@@ -1,14 +1,18 @@
 import React from "react";
-import { Outlet, useParams } from "react-router-dom";
+import { Outlet, useLocation, useParams } from "react-router-dom";
 import ZooData from "../components/animals";
 
-export default function MoreInfo() {
-  const { id } = useParams();
+export default function MoreInfo(props: any) {
+  const { id }: any = useParams();
+  const { isFed }: any = useParams();
+  const location = useLocation();
+  const data = location.state.data;
   return (
     <>
       <h1>MERINFO SIDA</h1>
       <div className="container">Detta djur heter: {id}</div>
-      <Outlet />
+      <p>{data.shortDescription}</p>
+      <span>{data.id}</span>
     </>
   );
 }
