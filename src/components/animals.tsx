@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { BrowserRouter, Link } from "react-router-dom";
+import { BrowserRouter, Link, Routes } from "react-router-dom";
 import { Route } from "react-router-dom";
 import moreInfo from "../pages/moreInfo";
 
@@ -53,7 +53,10 @@ export default function ZooData() {
             <div className="names">Namn: {animal.name}</div>
             <div className="shortDesc">{animal.shortDescription}</div>
             <div className="yob">Född: {animal.yearOfBirth}</div>
-            <button className="infoBtn">Mer info</button>
+
+            <button className="infoBtn">
+              <Link to={"/animals/" + animal.name}>Mer info</Link>
+            </button>
           </div>
         </>
       ))}
