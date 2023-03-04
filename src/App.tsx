@@ -9,18 +9,10 @@ import MoreInfo from "./pages/moreInfo";
 function App() {
   return (
     <>
-      <BrowserRouter>
-        <div className="App">
-          <header className="App-header"></header>
-
-          <ZooData />
-        </div>
-        <Routes>
-          <Route element={<MoreInfo />}>
-            <Route path="/animals/:id" element={<MoreInfo />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+      <div className="App">
+        <header className="App-header"></header>
+        <Outlet />
+      </div>
     </>
   );
 }

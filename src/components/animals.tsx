@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import { BrowserRouter, Link, Routes } from "react-router-dom";
 import { Route, useNavigate, Navigate } from "react-router-dom";
-import moreInfo from "../pages/moreInfo";
 import { Outlet } from "react-router-dom";
+import MoreInfo from "../pages/moreInfo";
 
 export default function ZooData() {
   axios({
@@ -23,18 +23,17 @@ export default function ZooData() {
   var renderAnimals = animals.map((animal: any) => (
     <>
       <div className="animal-container" key={animal.id}>
-        <img src={animal.imageUrl} className="images"></img>
+        <img src={animal.imageUrl} className="images" alt="Not Found"></img>
         <div className="names">Namn: {animal.name}</div>
         <div className="shortDesc">{animal.shortDescription}</div>
         <div className="yob">Född: {animal.yearOfBirth}</div>
 
-        <Link to={"/animals/" + animal.name} state={{ data: data }}>
+        <Link to={`/animals/${animal.name}`} state={{ data: data }}>
           <button className="infoBtn" onClick={HandleClick}>
             Mer info
           </button>
         </Link>
       </div>
-      <Outlet />
     </>
   ));
 
