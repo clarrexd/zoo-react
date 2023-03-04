@@ -15,7 +15,6 @@ function App() {
 
           <ZooData />
         </div>
-
         <Routes>
           <Route element={<MoreInfo />}>
             <Route path="/animals/:id" element={<MoreInfo />} />
