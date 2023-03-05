@@ -1,27 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 import axios from "axios";
-import { BrowserRouter, Link, Routes } from "react-router-dom";
-import { Route, useNavigate, Navigate } from "react-router-dom";
-import { Outlet } from "react-router-dom";
-import MoreInfo from "../pages/moreInfo";
+import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 export default function ZooData() {
   const animals = JSON.parse(localStorage.getItem("animalsData") as string);
+
   if (!animals) {
-    axios({
-      url: "https://animals.azurewebsites.net/api/animals",
-    }).then((response) => {
-      localStorage.setItem("animalsData", JSON.stringify(response.data));
-    });
+    axios
+      .get("https://animals.azurewebsites.net/api/animals")
+      .then((response) => {
+        localStorage.setItem("animalsData", JSON.stringify(response.data));
+      });
   }
 
-  const navigate = useNavigate();
-  const HandleClick = (event: any) => {
-    console.log("a");
-  };
-
-  const [data, setData] = useState([renderAnimals]);
-  var renderAnimals = animals.map((animal: any) => (
+  const renderAnimals = animals.map((animal: any) => (
     <>
       <div className="animal-container" key={animal.id}>
         <img src={animal.imageUrl} className="images" alt="Not Found"></img>
@@ -29,10 +22,8 @@ export default function ZooData() {
         <div className="shortDesc">{animal.shortDescription}</div>
         <div className="yob">Född: {animal.yearOfBirth}</div>
 
-        <Link to={`/animals/${animal.name}`} state={{ data: data }}>
-          <button className="infoBtn" onClick={HandleClick}>
-            Mer info
-          </button>
+        <Link to={`/animals/${animal.name}`}>
+          <button className="infoBtn">Mer info</button>
         </Link>
       </div>
     </>

@@ -34,3 +34,8 @@
   border-radius: 20%;
   border-color: darkcyan;
 }
+
+.animalPage_img {
+  width: 50vw;
+  height: 75vh;
+}

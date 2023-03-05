@@ -1,12 +1,11 @@
 import React from "react";
-import { Outlet, useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { IsFedStatus } from "../models/IsFedStatus";
 
 export default function MoreInfo() {
   const { id }: any = useParams();
   const animals = JSON.parse(localStorage.getItem("animalsData") as string);
-  const [lastClick, setLastClickTime] = useState();
   const [isFed, setIsFed] = useState(false);
   const [fedTime, setFedTime] = useState("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -24,28 +23,13 @@ export default function MoreInfo() {
     }
   }, [fetchAnimalData, isLoading]);
 
-  /*const updateFedStatus = (animal: any) => {
-    let date = new Date();
-    let currentTime = (date.getHours() + ":" + date.getMinutes()) as string;
-    let updateList = animals.map((updated: any) =>
-      animal.id === updated.id
-        ? { ...updated, lastFed: currentTime, isFed: true }
-        : updated
-    );
-    setLastClickTime(updateList);
-  };*/
-
-  /*function dataExists() {
-    if (fetchAnimalData && !isLoading) {
-      setIsFed(fetchAnimalData.isFed);
-      setFedTime(fetchAnimalData.lastFed);
-      setIsLoading(true);
+  function saveData(animal: IsFedStatus) {
+    if (!fetchAnimalData) {
+      localStorage.setItem(`${id}`, JSON.stringify(animal));
     }
   }
-  dataExists();*/
 
   function handleClick(animal: IsFedStatus) {
-    window.localStorage.setItem(`${id}`, JSON.stringify(animal));
     setIsFed(true);
 
     setFedTime(currentTime);
@@ -53,7 +37,7 @@ export default function MoreInfo() {
     fetchAnimalData.isFed = true;
     fetchAnimalData.lastFed = currentTime;
 
-    window.localStorage.setItem(`${id}`, JSON.stringify(fetchAnimalData));
+    localStorage.setItem(`${id}`, JSON.stringify(fetchAnimalData));
   }
 
   function FedOrNot() {
@@ -68,8 +52,13 @@ export default function MoreInfo() {
     if (id === animal.name) {
       return (
         <>
+          {saveData(animal)};
           <div>
-            <img src={animal.imageUrl} alt="Not found" />
+            <img
+              src={animal.imageUrl}
+              alt="Not found"
+              className="animalPage_img"
+            />
             <h2>{animal.name}</h2>
             <span>{animal.longDescription}</span>
             <br />

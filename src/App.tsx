@@ -1,10 +1,6 @@
 import React from "react";
 import "./App.css";
-import animalsData from "./components/animals";
-import ZooData from "./components/animals";
-import { BrowserRouter, Link } from "react-router-dom";
-import { Routes, Route, Outlet } from "react-router-dom";
-import MoreInfo from "./pages/moreInfo";
+import { Outlet } from "react-router-dom";
 
 function App() {
   return (
