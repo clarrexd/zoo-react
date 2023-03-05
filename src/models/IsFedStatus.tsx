@@ -1,5 +1,3 @@
-import React from "react";
-
 export interface IsFedStatus {
   id: number;
   imageUrl: string;

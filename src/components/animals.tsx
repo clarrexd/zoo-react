@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 export default function ZooData() {
-  //const animals = JSON.parse(localStorage.getItem("animalsData") as string);
   const [animals, setStoredAnimals] = useState(
     JSON.parse(String(localStorage.getItem("animalsData")))
   );

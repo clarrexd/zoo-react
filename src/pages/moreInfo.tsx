@@ -29,7 +29,7 @@ export default function MoreInfo() {
     }
   }
 
-  function handleClick(animal: IsFedStatus) {
+  function handleClick(fetchAnimalData: IsFedStatus) {
     setIsFed(true);
     setFedTime(currentTime);
     fetchAnimalData.isFed = true;
@@ -45,7 +45,7 @@ export default function MoreInfo() {
       return "Inte matad";
     }
   }
-  let [animal] = animals.filter((animal: any) => id === animal.name);
+  const [animal] = animals.filter((animal: IsFedStatus) => id === animal.name);
 
   const animalPage = (
     <>
