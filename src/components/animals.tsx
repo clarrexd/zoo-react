@@ -6,13 +6,14 @@ import { Outlet } from "react-router-dom";
 import MoreInfo from "../pages/moreInfo";
 
 export default function ZooData() {
-  axios({
-    url: "https://animals.azurewebsites.net/api/animals",
-  }).then((response) => {
-    localStorage.setItem("animalsData", JSON.stringify(response.data));
-  });
-
   const animals = JSON.parse(localStorage.getItem("animalsData") as string);
+  if (!animals) {
+    axios({
+      url: "https://animals.azurewebsites.net/api/animals",
+    }).then((response) => {
+      localStorage.setItem("animalsData", JSON.stringify(response.data));
+    });
+  }
 
   const navigate = useNavigate();
   const HandleClick = (event: any) => {
