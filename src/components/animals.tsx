@@ -14,9 +14,9 @@ export default function ZooData() {
       });
   }
 
-  const renderAnimals = animals.map((animal: any) => (
+  const renderAnimals = animals.map((animal: any, index: number) => (
     <>
-      <div className="animal-container" key={animal.id}>
+      <div className="animal-container" key={index}>
         <img src={animal.imageUrl} className="images" alt="Not Found"></img>
         <div className="names">Namn: {animal.name}</div>
         <div className="shortDesc">{animal.shortDescription}</div>

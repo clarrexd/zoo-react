@@ -31,9 +31,7 @@ export default function MoreInfo() {
 
   function handleClick(animal: IsFedStatus) {
     setIsFed(true);
-
     setFedTime(currentTime);
-
     fetchAnimalData.isFed = true;
     fetchAnimalData.lastFed = currentTime;
 
