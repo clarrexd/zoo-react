@@ -45,39 +45,32 @@ export default function MoreInfo() {
       return "Inte matad";
     }
   }
+  let [animal] = animals.filter((animal: any) => id === animal.name);
 
-  let animalPage = animals.map((animal: any) => {
-    if (id === animal.name) {
-      return (
-        <>
-          {saveData(animal)};
-          <div>
-            <img
-              src={animal.imageUrl}
-              alt="Not found"
-              className="animalPage_img"
-            />
-            <h2>{animal.name}</h2>
-            <span>{animal.longDescription}</span>
-            <br />
-            <p>
-              {animal.name} blev senast matad {fedTime}
-            </p>
-            <p>Status: {FedOrNot()}</p>
-            <button
-              disabled={isFed}
-              onClick={() => {
-                handleClick(animal);
-              }}
-            >
-              Mata {animal.name}
-            </button>
-            <br />
-          </div>
-        </>
-      );
-    }
-  });
+  const animalPage = (
+    <>
+      {saveData(animal)};
+      <div>
+        <img src={animal.imageUrl} alt="Not found" className="animalPage_img" />
+        <h2>{animal.name}</h2>
+        <span>{animal.longDescription}</span>
+        <br />
+        <p>
+          {animal.name} blev senast matad {fedTime}
+        </p>
+        <p>Status: {FedOrNot()}</p>
+        <button
+          disabled={isFed}
+          onClick={() => {
+            handleClick(animal);
+          }}
+        >
+          Mata {animal.name}
+        </button>
+        <br />
+      </div>
+    </>
+  );
 
   return <>{animalPage}</>;
 }
