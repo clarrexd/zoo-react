@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { IsFedStatus } from "../models/IsFedStatus";
+import { IAnimal } from "../models/IAnimal";
 
 export default function MoreInfo() {
   const { id }: any = useParams();
@@ -23,13 +23,13 @@ export default function MoreInfo() {
     }
   }, [fetchAnimalData, isLoading]);
 
-  function saveData(animal: IsFedStatus) {
+  function saveData(animal: IAnimal) {
     if (!fetchAnimalData) {
       localStorage.setItem(`${id}`, JSON.stringify(animal));
     }
   }
 
-  function handleClick(fetchAnimalData: IsFedStatus) {
+  function handleClick(fetchAnimalData: IAnimal) {
     setIsFed(true);
     setFedTime(currentTime);
     fetchAnimalData.isFed = true;
@@ -45,7 +45,7 @@ export default function MoreInfo() {
       return "Inte matad";
     }
   }
-  const [animal] = animals.filter((animal: IsFedStatus) => id === animal.name);
+  const [animal] = animals.filter((animal: IAnimal) => id === animal.name);
 
   const animalPage = (
     <>

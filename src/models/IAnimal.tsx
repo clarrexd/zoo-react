@@ -1,4 +1,4 @@
-export interface IsFedStatus {
+export interface IAnimal {
   id: number;
   imageUrl: string;
   isFed: boolean;
